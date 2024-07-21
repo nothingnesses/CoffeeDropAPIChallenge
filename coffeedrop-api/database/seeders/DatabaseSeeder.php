@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder {
 			DaySeeder::class,
 			PostcodeSeeder::class,
 			TimeSeeder::class,
+			PostcodeDayMappingSeeder::class,
 			LocationSeeder::class,
 		]);
 	}
