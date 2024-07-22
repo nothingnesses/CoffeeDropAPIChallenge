@@ -7,7 +7,7 @@ use App\Models\Day;
 use App\Models\Postcode;
 use App\Models\Time;
 use Illuminate\Http\Request;
-use JustSteveKing\LaravelPostcodes as LP;
+use JustSteveKing\LaravelPostcodes\Facades\Postcode as FacadesPostcode;
 
 class BusinessHoursController extends Controller {
 	/**
@@ -65,7 +65,7 @@ class BusinessHoursController extends Controller {
 	 * @param string $postcode The postcode to find the nearest CoffeeDrop location for.
 	 */
 	public function get_nearest_location(string $postcode) {
-		$postcode_data = LP\Facades\Postcode::getPostcode($postcode);
+		$postcode_data = FacadesPostcode::getPostcode($postcode);
 		$coordinates = new \Helpers\Coordinates($postcode_data->latitude, $postcode_data->longitude);
 		$nearest_postcode_id = null;
 		$nearest_postcode_distance = null;
@@ -98,5 +98,34 @@ class BusinessHoursController extends Controller {
 			'opening_times' => $opening_times,
 			'closing_times' => $closing_times,
 		];
+	}
+
+	/**
+	 * Accepts a postcode and set of opening and closing times, creates a new location.
+	 *
+	 * @param Request $request The request containing the JSON-formatted body.
+	 * @todo Add validation, sanitisation and error-reporting.
+	 */
+	public function create_new_location(Request $request) {
+		$request_parsed = $request->json()->all();
+		$postcode_id = Postcode::firstOrCreate([
+			'postcode' => $request_parsed['postcode']
+		])->id;
+		foreach ($request_parsed['opening_times'] as $day => $time) {
+			BusinessHours::firstOrCreate([
+				'postcode_id' => $postcode_id,
+				'day_id' => Day::query()
+					->where('day', ucfirst($day))
+					->first()
+					->id,
+				'opening_time_id' => Time::firstOrCreate([
+					'time' => $time
+				])->id,
+				'closing_time_id' => Time::firstOrCreate([
+					'time' => $request_parsed['closing_times'][$day]
+				])->id,
+			]);
+		}
+		return $this->get_nearest_location($request_parsed['postcode']);
 	}
 }
