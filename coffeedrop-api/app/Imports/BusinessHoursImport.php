@@ -21,14 +21,12 @@ class BusinessHoursImport implements ToCollection, WithHeadingRow, SkipsOnError 
 	public function collection(Collection $rows) {
 		$get_day_id = fn($day) => Day::query()
 			->where('day', $day)
-			->get()
 			->first()
 			->id;
 		$get_time_id = fn($time) => empty($time)
 			? NULL
 			: Time::query()
 				->where('time', $time)
-				->get()
 				->first()
 				->id;
 		$days = collect([
@@ -41,7 +39,7 @@ class BusinessHoursImport implements ToCollection, WithHeadingRow, SkipsOnError 
 			'Sunday'
 		])
 			->mapWithKeys(
-				fn($item, $key) => [
+				fn($item) => [
 					$item => [
 						'day_id' => $get_day_id($item),
 						'opening_time_key' => 'open_' . strtolower($item),
@@ -51,14 +49,11 @@ class BusinessHoursImport implements ToCollection, WithHeadingRow, SkipsOnError 
 			);
 		foreach ($rows as $row) {
 			if (!empty($row['postcode'])) {
-				$postcode_id = Postcode::query()
-					->where('postcode', $row['postcode'])
-					->get()
-					->first()
-					->id;
-				foreach ($days as $key => $value) {
+				foreach ($days as $value) {
 					BusinessHours::firstOrCreate([
-						'postcode_id' => $postcode_id,
+						'postcode_id' => Postcode::firstOrCreate([
+							'postcode' => $row['postcode']
+						])->id,
 						'day_id' => $value['day_id'],
 						'opening_time_id' => $get_time_id($row[$value['opening_time_key']]),
 						'closing_time_id' => $get_time_id($row[$value['closing_time_key']]),
