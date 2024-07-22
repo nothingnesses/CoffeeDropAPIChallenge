@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Cashback extends Model
 {
     use HasFactory;
+
+	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array<int, string>
+	 */
+	protected $fillable = [
+		'ristretto',
+		'espresso',
+		'lungo',
+		'cashback_pounds',
+		'cashback_pence',
+	];
 }
