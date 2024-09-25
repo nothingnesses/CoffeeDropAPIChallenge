@@ -1,0 +1,10 @@
+{
+  inputs = {};
+  outputs = { ... }: {
+    db-name = "db";
+    db-password = "password";
+    db-user = "user";
+    debug = true;
+    domain = "localhost";
+  };
+}
