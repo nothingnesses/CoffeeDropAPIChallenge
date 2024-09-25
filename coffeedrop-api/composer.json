@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "clickbar/laravel-magellan": "^1.6",
         "juststeveking/laravel-postcodes": "^4.0",
         "laravel/framework": "^11.9",
         "laravel/passport": "^12.0",
