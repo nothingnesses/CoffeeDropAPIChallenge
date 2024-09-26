@@ -10,6 +10,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Postcode extends Model {
 	use HasFactory, HasPostgisColumns;
 
+	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array<int, string>
+	 */
+	protected $fillable = ['postcode'];
+
 	protected array $postgisColumns = [
 		'location' => [
 			'type' => 'geography',
