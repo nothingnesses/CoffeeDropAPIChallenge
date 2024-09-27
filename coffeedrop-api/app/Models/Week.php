@@ -10,6 +10,21 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Week extends Model {
 	use HasFactory;
 
+	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array<int, string>
+	 */
+	protected $fillable = [
+		'day_' . Carbon::SUNDAY,
+		'day_' . Carbon::MONDAY,
+		'day_' . Carbon::TUESDAY,
+		'day_' . Carbon::WEDNESDAY,
+		'day_' . Carbon::THURSDAY,
+		'day_' . Carbon::FRIDAY,
+		'day_' . Carbon::SATURDAY
+	];
+
 	public function sunday(): BelongsTo {
 		return $this->belongsTo(Day::class, 'day_' . Carbon::SUNDAY);
 	}
