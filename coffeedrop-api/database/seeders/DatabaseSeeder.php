@@ -12,7 +12,8 @@ class DatabaseSeeder extends Seeder {
 	public function run(): void {
 		$this->call([
 			UserSeeder::class,
-			TimeSeeder::class
+			TimeSeeder::class,
+			DaySeeder::class
 		]);
 	}
 }
