@@ -11,6 +11,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Day extends Model {
 	use HasFactory;
 
+	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array<int, string>
+	 */
+	protected $fillable = ['day', 'open_time_id', 'closed_time_id'];
+
 	public function opening_time(): BelongsTo {
 		return $this->belongsTo(Time::class, 'open_time_id');
 	}
