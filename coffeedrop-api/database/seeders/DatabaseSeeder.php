@@ -13,7 +13,8 @@ class DatabaseSeeder extends Seeder {
 		$this->call([
 			UserSeeder::class,
 			TimeSeeder::class,
-			DaySeeder::class
+			DaySeeder::class,
+			WeekSeeder::class
 		]);
 	}
 }
