@@ -5,7 +5,7 @@
       url = "github:cachix/devenv";
     };
     env = {
-      url = "path:../env/";
+      url = "path:/home/jesse/documents/projects/php-playground/CoffeeDropAPIChallenge/env/";
     };
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";

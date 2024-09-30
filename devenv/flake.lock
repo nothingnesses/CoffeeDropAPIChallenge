@@ -161,13 +161,13 @@
     },
     "env": {
       "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-8V71K+YwJ6z7hy0VRwgMOBr5zWRwxx30ruU+IxWLXyw=",
-        "path": "../env/",
+        "lastModified": 1727350547,
+        "narHash": "sha256-TuzQ8XR9uswvt6VUdoT9zE9FSY8BPCP5/61clA56MTQ=",
+        "path": "/home/jesse/documents/projects/php-playground/CoffeeDropAPIChallenge/env/",
         "type": "path"
       },
       "original": {
-        "path": "../env/",
+        "path": "/home/jesse/documents/projects/php-playground/CoffeeDropAPIChallenge/env/",
         "type": "path"
       }
     },
