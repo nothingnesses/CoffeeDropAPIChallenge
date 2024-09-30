@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder {
 			DaySeeder::class,
 			WeekSeeder::class,
 			PostcodeSeeder::class,
-			LocationSeeder::class
+			LocationSeeder::class,
+			UnitRateTierSeeder::class
 		]);
 	}
 }
