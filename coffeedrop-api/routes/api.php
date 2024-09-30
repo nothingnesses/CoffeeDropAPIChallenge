@@ -18,6 +18,6 @@ Route::group(['middleware' => ['auth:api']], function () {
 	Route::resource(
 		'locations',
 		LocationController::class,
-		['only' => ['index']]
+		['only' => ['index', 'store']]
 	);
 });
