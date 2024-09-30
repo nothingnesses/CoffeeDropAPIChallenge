@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -41,6 +42,40 @@ class LocationRequest extends FormRequest {
 					Rule::postcode()
 				]
 			],
+			'POST' => (
+				function () {
+					$now = Carbon::now();
+					$rules = [
+						'postcode' => [
+							'required',
+							'string',
+							Rule::postcode()
+						],
+						'opening_times' => ['required'],
+						'closing_times' => ['required'],
+					];
+					foreach (
+						[
+							Carbon::SUNDAY,
+							Carbon::MONDAY,
+							Carbon::TUESDAY,
+							Carbon::WEDNESDAY,
+							Carbon::THURSDAY,
+							Carbon::FRIDAY,
+							Carbon::SATURDAY
+						] as $day
+					) {
+						$day_name = strtolower(
+							$now
+								->next($day)
+								->dayName
+						);
+						$rules["opening_times.{$day_name}"] = ['date_format:H:i'];
+						$rules["closing_times.{$day_name}"] = ['date_format:H:i'];
+					}
+					return $rules;
+				}
+			)(),
 			default => []
 		};
 	}
