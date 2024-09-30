@@ -10,6 +10,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Cashback extends Model {
 	use HasFactory;
 
+	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array<int, string>
+	 */
+	protected $fillable = ['user_id', 'total'];
+
 	public function products(): BelongsToMany {
 		return $this->belongsToMany(Product::class);
 	}
