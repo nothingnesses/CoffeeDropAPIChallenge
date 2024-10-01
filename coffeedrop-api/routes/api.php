@@ -9,14 +9,16 @@ Route::get('/user', function (Request $request) {
 	return $request->user();
 })->middleware('auth:api');
 
-Route::resource(
-	'locations',
-	LocationController::class,
-	['only' => ['index', 'store']]
-);
+Route::group(['middleware' => ['client']], function () {
+	Route::resource(
+		'locations',
+		LocationController::class,
+		['only' => ['index', 'store']]
+	);
 
-Route::resource(
-	'cashbacks',
-	CashbackController::class,
-	['only' => ['store']]
-);
+	Route::resource(
+		'cashbacks',
+		CashbackController::class,
+		['only' => ['store']]
+	);
+});
