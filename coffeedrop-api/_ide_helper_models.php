@@ -20,6 +20,9 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property int|null $user_id
  * @property int $total
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $products
+ * @property-read int|null $products_count
+ * @property-read \App\Models\User|null $user
  * @method static \Illuminate\Database\Eloquent\Builder|Cashback newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Cashback newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Cashback query()
@@ -42,6 +45,22 @@ namespace App\Models{
  * @property string $day
  * @property int $open_time_id
  * @property int $closed_time_id
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Week> $as_friday
+ * @property-read int|null $as_friday_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Week> $as_monday
+ * @property-read int|null $as_monday_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Week> $as_saturday
+ * @property-read int|null $as_saturday_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Week> $as_sunday
+ * @property-read int|null $as_sunday_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Week> $as_thursday
+ * @property-read int|null $as_thursday_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Week> $as_tuesday
+ * @property-read int|null $as_tuesday_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Week> $as_wednesday
+ * @property-read int|null $as_wednesday_count
+ * @property-read \App\Models\Time $closing_time
+ * @property-read \App\Models\Time $opening_time
  * @method static \Illuminate\Database\Eloquent\Builder|Day newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Day newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Day query()
@@ -64,6 +83,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property int $postcode_id
  * @property int $week_id
+ * @property-read \App\Models\Postcode $postcode
  * @method static \Illuminate\Database\Eloquent\Builder|Location newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Location newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Location query()
@@ -84,7 +104,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string $postcode
- * @property string $location
+ * @property \Illuminate\Database\Eloquent\Collection<int, \App\Models\Location> $location
+ * @property-read int|null $location_count
  * @method static \Illuminate\Database\Eloquent\Builder|Postcode newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Postcode newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Postcode query()
@@ -106,6 +127,9 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string $name
  * @property int $unit_rate_tier_id
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Cashback> $cashbacks
+ * @property-read int|null $cashbacks_count
+ * @property-read \App\Models\UnitRateTier $unit_rate_tier
  * @method static \Illuminate\Database\Eloquent\Builder|Product newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Product newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Product query()
@@ -126,6 +150,10 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string $time
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Day> $as_closing_time
+ * @property-read int|null $as_closing_time_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Day> $as_opening_time
+ * @property-read int|null $as_opening_time_count
  * @method static \Illuminate\Database\Eloquent\Builder|Time newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Time newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Time query()
@@ -147,6 +175,11 @@ namespace App\Models{
  * @property int $minimum_amount
  * @property int $rate
  * @property int|null $tier_below_id
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, UnitRateTier> $as_tier_below
+ * @property-read int|null $as_tier_below_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Product> $product
+ * @property-read int|null $product_count
+ * @property-read UnitRateTier|null $tier_below
  * @method static \Illuminate\Database\Eloquent\Builder|UnitRateTier newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|UnitRateTier newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|UnitRateTier query()
@@ -172,6 +205,8 @@ namespace App\Models{
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Cashback> $cashback
+ * @property-read int|null $cashback_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Passport\Client> $clients
  * @property-read int|null $clients_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
@@ -208,6 +243,13 @@ namespace App\Models{
  * @property int|null $day_4
  * @property int|null $day_5
  * @property int|null $day_6
+ * @property-read \App\Models\Day|null $friday
+ * @property-read \App\Models\Day|null $monday
+ * @property-read \App\Models\Day|null $saturday
+ * @property-read \App\Models\Day|null $sunday
+ * @property-read \App\Models\Day|null $thursday
+ * @property-read \App\Models\Day|null $tuesday
+ * @property-read \App\Models\Day|null $wednesday
  * @method static \Illuminate\Database\Eloquent\Builder|Week newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Week newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Week query()
