@@ -18,7 +18,7 @@ class CashbackController extends Controller {
 				Cashback::select(['id', 'user_id', 'total'])
 					->latest()
 					->take($request->query('latest'))
-					->with(['products:id,name', 'products.unit_rate_tiers:id,minimum_amount,rate'])
+					->with(['products:id,name'])
 					->get()
 			);
 		}
