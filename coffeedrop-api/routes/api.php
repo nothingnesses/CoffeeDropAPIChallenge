@@ -19,6 +19,6 @@ Route::group(['middleware' => ['auth:api']], function () {
 	Route::resource(
 		'cashbacks',
 		CashbackController::class,
-		['only' => ['store']]
+		['only' => ['index', 'store']]
 	);
 });
