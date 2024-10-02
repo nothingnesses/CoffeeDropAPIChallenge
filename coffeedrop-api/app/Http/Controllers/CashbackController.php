@@ -10,6 +10,21 @@ use App\Models\User;
 
 class CashbackController extends Controller {
 	/**
+	 * Display a listing of the resource.
+	 */
+	public function index(CashbackRequest $request) {
+		if ($request->has('latest')) {
+			return CashbackResource::collection(
+				Cashback::latest()
+					->take($request->query('latest'))
+					->with(['products'])
+					->get()
+			);
+		}
+		return 'todo';
+	}
+
+	/**
 	 * Store a newly created resource in storage.
 	 */
 	public function store(CashbackRequest $request) {
@@ -45,6 +60,6 @@ class CashbackController extends Controller {
 					->get()
 					->map(fn($product) => $product->getKey())
 			);
-		return new CashbackResource($cashback);
+		return CashbackResource::make($cashback);
 	}
 }
