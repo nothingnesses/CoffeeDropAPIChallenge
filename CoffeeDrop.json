@@ -1,0 +1,149 @@
+[
+  {
+    "v": 3,
+    "name": "CoffeeDrop",
+    "folders": [],
+    "requests": [
+      {
+        "v": "7",
+        "endpoint": "https://coffeedrop.localhost/api/tokens/index?user_id=1&name=0",
+        "name": "GetToken",
+        "params": [],
+        "headers": [],
+        "method": "GET",
+        "auth": {
+          "authType": "inherit",
+          "authActive": true
+        },
+        "preRequestScript": "",
+        "testScript": "",
+        "body": {
+          "contentType": null,
+          "body": null
+        },
+        "requestVariables": []
+      },
+      {
+        "v": "7",
+        "name": "GetNearestLocation",
+        "endpoint": "https://coffeedrop.localhost/api/locations?nearest-to-postcode=CV1 4JP",
+        "method": "GET",
+        "headers": [],
+        "params": [],
+        "auth": {
+          "authType": "bearer",
+          "authActive": true,
+          "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTgwYjMzYzJmMzI4MmZiODNiOGZkOGEyMzMzNTdiMTQxNjliNmY3NDljZDM4Yjc3OTU1NWUxZWVmMzFhNGJlM2E4NGFkNThlM2YyOWY2ZjEiLCJpYXQiOjE3Mjc5NDgxNzcuMTg4NzAyLCJuYmYiOjE3Mjc5NDgxNzcuMTg4NzA1LCJleHAiOjE3NTk0ODQxNzcuMTc3MzM4LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.p4vYYroNb9y17AnU_3_ZDIkP6d3Idr8qwxw5K3r8Sj2PHY1WWBPD3CvZa8HhGzUaRey1voevnBmRn_ZGiFIKH5ST-WHn5FxSgdyNAyghzE2XwGY-PEWYKFa0MrNluWmoOu8PN9SV7IG1QSRl_W6iW8Ub4tL3VwKKat5v7irZvUgeJlYXgrTZGn2fLFvoSaa_A3ckN_sjDnjz6VnyQYw-Hj-Ym3AJV8EPcidUE1e70MXRl8bBLD5okJzS6HZ0ptvo25ZrC5VzzPOQ11QUOL_ncMwmfGalEhnjdCTNvFxnet-TotWPFD9KaBDwwiDSAMt3liqAOnFK5WmuYjWMgV9h0Hb2jNPc0FQpUWoZDNZgiXY4XQe54nVzhzxtH5obvR-v9aS_0H040bRJqDIwtI_YkQD6Kkjx3GMI-RoQEJu1QB1utqztKJtzAeMy36leyx8IxcVkDE78rcWmY65SJHWnRYGabR7iHSCcrgh7qQQ6Nfi0xcdpnjXJqH941h2hmc4jd5MyJHLaWRV7kSO6ivHMI8Fa8fVw1H0DZ7mkxxnbZt15ZspECOiwIp5AudhemMfUIxyOmki6Osdc7Xf9OxXXJdodLw5RJSpMm1U4GHCPySocyCWR1TXfrGEHf9lxN0RK-fZzhb2NtxpOrg5NNzL5Y6L-tPfOGM3EDqBBB2ve4f8",
+          "addTo": "HEADERS",
+          "grantTypeInfo": {
+            "authEndpoint": "",
+            "tokenEndpoint": "",
+            "clientID": "",
+            "clientSecret": "",
+            "isPKCE": false,
+            "codeVerifierMethod": "S256",
+            "grantType": "AUTHORIZATION_CODE",
+            "token": ""
+          }
+        },
+        "body": {
+          "contentType": null,
+          "body": null
+        },
+        "requestVariables": [],
+        "preRequestScript": "",
+        "testScript": ""
+      },
+      {
+        "v": "7",
+        "name": "CreateNewLocation",
+        "endpoint": "https://coffeedrop.localhost/api/locations",
+        "method": "POST",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "active": true,
+            "description": ""
+          }
+        ],
+        "params": [],
+        "auth": {
+          "authType": "bearer",
+          "authActive": true,
+          "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTgwYjMzYzJmMzI4MmZiODNiOGZkOGEyMzMzNTdiMTQxNjliNmY3NDljZDM4Yjc3OTU1NWUxZWVmMzFhNGJlM2E4NGFkNThlM2YyOWY2ZjEiLCJpYXQiOjE3Mjc5NDgxNzcuMTg4NzAyLCJuYmYiOjE3Mjc5NDgxNzcuMTg4NzA1LCJleHAiOjE3NTk0ODQxNzcuMTc3MzM4LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.p4vYYroNb9y17AnU_3_ZDIkP6d3Idr8qwxw5K3r8Sj2PHY1WWBPD3CvZa8HhGzUaRey1voevnBmRn_ZGiFIKH5ST-WHn5FxSgdyNAyghzE2XwGY-PEWYKFa0MrNluWmoOu8PN9SV7IG1QSRl_W6iW8Ub4tL3VwKKat5v7irZvUgeJlYXgrTZGn2fLFvoSaa_A3ckN_sjDnjz6VnyQYw-Hj-Ym3AJV8EPcidUE1e70MXRl8bBLD5okJzS6HZ0ptvo25ZrC5VzzPOQ11QUOL_ncMwmfGalEhnjdCTNvFxnet-TotWPFD9KaBDwwiDSAMt3liqAOnFK5WmuYjWMgV9h0Hb2jNPc0FQpUWoZDNZgiXY4XQe54nVzhzxtH5obvR-v9aS_0H040bRJqDIwtI_YkQD6Kkjx3GMI-RoQEJu1QB1utqztKJtzAeMy36leyx8IxcVkDE78rcWmY65SJHWnRYGabR7iHSCcrgh7qQQ6Nfi0xcdpnjXJqH941h2hmc4jd5MyJHLaWRV7kSO6ivHMI8Fa8fVw1H0DZ7mkxxnbZt15ZspECOiwIp5AudhemMfUIxyOmki6Osdc7Xf9OxXXJdodLw5RJSpMm1U4GHCPySocyCWR1TXfrGEHf9lxN0RK-fZzhb2NtxpOrg5NNzL5Y6L-tPfOGM3EDqBBB2ve4f8"
+        },
+        "body": {
+          "contentType": "application/json",
+          "body": "{\n      \"postcode\": \"CV313PP\",\n      \"opening_times\": {\"monday\" : \"09:00\", \"tuesday\" : \"09:00\", \"saturday\" : \"08:30\"},\n      \"closing_times\": {\"monday\" : \"19:00\", \"tuesday\" : \"19:00\", \"saturday\" : \"18:30\"}\n}"
+        },
+        "requestVariables": [],
+        "preRequestScript": "",
+        "testScript": ""
+      },
+      {
+        "v": "7",
+        "name": "CalculateCashback",
+        "endpoint": "https://coffeedrop.localhost/api/cashbacks",
+        "method": "POST",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "active": true,
+            "description": ""
+          }
+        ],
+        "params": [],
+        "auth": {
+          "authType": "bearer",
+          "authActive": true,
+          "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTgwYjMzYzJmMzI4MmZiODNiOGZkOGEyMzMzNTdiMTQxNjliNmY3NDljZDM4Yjc3OTU1NWUxZWVmMzFhNGJlM2E4NGFkNThlM2YyOWY2ZjEiLCJpYXQiOjE3Mjc5NDgxNzcuMTg4NzAyLCJuYmYiOjE3Mjc5NDgxNzcuMTg4NzA1LCJleHAiOjE3NTk0ODQxNzcuMTc3MzM4LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.p4vYYroNb9y17AnU_3_ZDIkP6d3Idr8qwxw5K3r8Sj2PHY1WWBPD3CvZa8HhGzUaRey1voevnBmRn_ZGiFIKH5ST-WHn5FxSgdyNAyghzE2XwGY-PEWYKFa0MrNluWmoOu8PN9SV7IG1QSRl_W6iW8Ub4tL3VwKKat5v7irZvUgeJlYXgrTZGn2fLFvoSaa_A3ckN_sjDnjz6VnyQYw-Hj-Ym3AJV8EPcidUE1e70MXRl8bBLD5okJzS6HZ0ptvo25ZrC5VzzPOQ11QUOL_ncMwmfGalEhnjdCTNvFxnet-TotWPFD9KaBDwwiDSAMt3liqAOnFK5WmuYjWMgV9h0Hb2jNPc0FQpUWoZDNZgiXY4XQe54nVzhzxtH5obvR-v9aS_0H040bRJqDIwtI_YkQD6Kkjx3GMI-RoQEJu1QB1utqztKJtzAeMy36leyx8IxcVkDE78rcWmY65SJHWnRYGabR7iHSCcrgh7qQQ6Nfi0xcdpnjXJqH941h2hmc4jd5MyJHLaWRV7kSO6ivHMI8Fa8fVw1H0DZ7mkxxnbZt15ZspECOiwIp5AudhemMfUIxyOmki6Osdc7Xf9OxXXJdodLw5RJSpMm1U4GHCPySocyCWR1TXfrGEHf9lxN0RK-fZzhb2NtxpOrg5NNzL5Y6L-tPfOGM3EDqBBB2ve4f8"
+        },
+        "body": {
+          "contentType": "application/json",
+          "body": "{\n      \"Ristretto\": 10,\n      \"Espresso\": 100,\n      \"Lungo\":30\n}\n\n"
+        },
+        "requestVariables": [],
+        "preRequestScript": "",
+        "testScript": ""
+      },
+      {
+        "v": "7",
+        "name": "GetFiveLatestCashbacks",
+        "endpoint": "https://coffeedrop.localhost/api/cashbacks?latest=5",
+        "method": "GET",
+        "headers": [],
+        "params": [],
+        "auth": {
+          "authType": "bearer",
+          "authActive": true,
+          "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTgwYjMzYzJmMzI4MmZiODNiOGZkOGEyMzMzNTdiMTQxNjliNmY3NDljZDM4Yjc3OTU1NWUxZWVmMzFhNGJlM2E4NGFkNThlM2YyOWY2ZjEiLCJpYXQiOjE3Mjc5NDgxNzcuMTg4NzAyLCJuYmYiOjE3Mjc5NDgxNzcuMTg4NzA1LCJleHAiOjE3NTk0ODQxNzcuMTc3MzM4LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.p4vYYroNb9y17AnU_3_ZDIkP6d3Idr8qwxw5K3r8Sj2PHY1WWBPD3CvZa8HhGzUaRey1voevnBmRn_ZGiFIKH5ST-WHn5FxSgdyNAyghzE2XwGY-PEWYKFa0MrNluWmoOu8PN9SV7IG1QSRl_W6iW8Ub4tL3VwKKat5v7irZvUgeJlYXgrTZGn2fLFvoSaa_A3ckN_sjDnjz6VnyQYw-Hj-Ym3AJV8EPcidUE1e70MXRl8bBLD5okJzS6HZ0ptvo25ZrC5VzzPOQ11QUOL_ncMwmfGalEhnjdCTNvFxnet-TotWPFD9KaBDwwiDSAMt3liqAOnFK5WmuYjWMgV9h0Hb2jNPc0FQpUWoZDNZgiXY4XQe54nVzhzxtH5obvR-v9aS_0H040bRJqDIwtI_YkQD6Kkjx3GMI-RoQEJu1QB1utqztKJtzAeMy36leyx8IxcVkDE78rcWmY65SJHWnRYGabR7iHSCcrgh7qQQ6Nfi0xcdpnjXJqH941h2hmc4jd5MyJHLaWRV7kSO6ivHMI8Fa8fVw1H0DZ7mkxxnbZt15ZspECOiwIp5AudhemMfUIxyOmki6Osdc7Xf9OxXXJdodLw5RJSpMm1U4GHCPySocyCWR1TXfrGEHf9lxN0RK-fZzhb2NtxpOrg5NNzL5Y6L-tPfOGM3EDqBBB2ve4f8",
+          "addTo": "HEADERS",
+          "grantTypeInfo": {
+            "authEndpoint": "",
+            "tokenEndpoint": "",
+            "clientID": "",
+            "clientSecret": "",
+            "isPKCE": false,
+            "codeVerifierMethod": "S256",
+            "grantType": "AUTHORIZATION_CODE",
+            "token": ""
+          }
+        },
+        "body": {
+          "contentType": null,
+          "body": null
+        },
+        "requestVariables": [],
+        "preRequestScript": "",
+        "testScript": ""
+      }
+    ],
+    "auth": {
+      "authType": "inherit",
+      "authActive": true
+    },
+    "headers": []
+  }
+]
